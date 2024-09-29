@@ -1,0 +1,16 @@
+{
+  "name": "web-compute",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "description": "WebCompute",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  }
+}
