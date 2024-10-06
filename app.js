@@ -13,7 +13,10 @@ app.use(function (req, res, next) {
 });
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
-    res.json({ error: err });
+    res.json({
+        error: err,
+        message: err.message
+    });
 });
 app.set("port", process.env.PORT || 3000);
 app.listen(app.get("port"));

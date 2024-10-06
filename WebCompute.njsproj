@@ -32,10 +32,14 @@
     <Content Include="app.js" />
     <Content Include="package.json" />
     <Content Include="public\index.html" />
+    <Content Include="public\main.js" />
+    <Content Include="public\modules\compute-shader.js" />
+    <Content Include="public\shader.wgsl" />
     <Content Include="public\style.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\" />
+    <Folder Include="public\modules\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
