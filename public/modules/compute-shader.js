@@ -60,18 +60,16 @@ export class ComputeShader {
         }
         return { bindGroupEntries, bindGroupLayoutEntries };
     }
-    compute(x = 1, y = 1, z = 1) {
+    compute(x = 1, y = 1, z = 1, outputs) {
         const commandEncoder = this.#device.createCommandEncoder();
         const passEncoder = commandEncoder.beginComputePass();
         passEncoder.setPipeline(this.#pipe);
         passEncoder.setBindGroup(0, this.#bindGroup);
         passEncoder.dispatchWorkgroups(x, y, z);
         passEncoder.end();
-        this.#device.queue.submit([commandEncoder.finish()]);
-    }
-    copy(src, dst) {
-        const commandEncoder = this.#device.createCommandEncoder();
-        commandEncoder.copyBufferToBuffer(this.#buffers[src], 0, this.#buffers[dst], 0, this.#buffers[dst].size);
+        for (const output of outputs) {
+            commandEncoder.copyBufferToBuffer(this.#buffers[output.src], 0, this.#buffers[output.dst], 0, this.#buffers[output.dst].size);
+        }
         this.#device.queue.submit([commandEncoder.finish()]);
     }
 }
